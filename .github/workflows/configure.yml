@@ -7,7 +7,7 @@ on:
 
 jobs:
   create-env-file:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Create .env file
         run: |
