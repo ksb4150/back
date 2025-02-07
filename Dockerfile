@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-ENTRYPOINT ["python", "/app/app.py"]
+ENTRYPOINT ["python", "app.py"]
