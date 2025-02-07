@@ -12,8 +12,8 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo "OPENAI_API_KEY=${{ secrets.API_ENV.OPENAI_API_KEY }}" >> .env
-          echo "UPBIT_ACCESS_KEY=${{ secrets.API_ENV.UPBIT_ACCESS_KEY }}" >> .env
-          echo "UPBIT_SECRET_KEY=${{ secrets.API_ENV.UPBIT_SECRET_KEY }}" >> .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "UPBIT_ACCESS_KEY=${{ secrets.UPBIT_ACCESS_KEY }}" >> .env
+          echo "UPBIT_SECRET_KEY=${{ secrets.UPBIT_SECRET_KEY }}" >> .env
           cat .env
         shell: bash
