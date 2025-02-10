@@ -15,4 +15,4 @@ app.register_blueprint(openai_bp, url_prefix='/api/openai')
 app.register_blueprint(crawling_bp, url_prefix='/api/crawling')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
