@@ -57,6 +57,7 @@ class UpbitTrader:
                 'access_key': self.access_key,
                 'nonce': str(uuid.uuid4()),
             }
+            print(f"access_token=${self.access_key}")
             jwt_token = jwt.encode(payload, self.secret_key)
             headers = {'Authorization': f'Bearer {jwt_token}'}
             url = "https://api.upbit.com/v1/accounts"
