@@ -13,6 +13,13 @@ load_dotenv()
 # Blueprint 생성
 connect_bp = Blueprint('connect', __name__)
 
+logging.basicConfig(
+    filename='/var/log/myapp.log',  # Log file path (Change as needed)
+    level=logging.INFO,  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 class UpbitTrader:
     def __init__(self):
         self.access_key = os.getenv('UPBIT_ACCESS_KEY')
