@@ -8,6 +8,8 @@ import os
 # 환경 변수 로드
 load_dotenv()
 
+print(os.getenv("UPBIT_ACCESS_KEY"))
+
 # Blueprint 생성
 connect_bp = Blueprint('connect', __name__)
 
@@ -53,6 +55,7 @@ class UpbitTrader:
 
     def get_balance(self):
         try:
+            print(f"잔고 조회 함수")
             payload = {
                 'access_key': self.access_key,
                 'nonce': str(uuid.uuid4()),
@@ -104,6 +107,7 @@ def get_chart():
 @connect_bp.route('/balance', methods=['GET'])
 def get_balance():
     """잔고 조회 API"""
+    print(f"잔고 조회 실행")
     data = trader.get_balance()
     if data is not None:
         return jsonify({
