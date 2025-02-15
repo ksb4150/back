@@ -4,11 +4,11 @@ import requests
 import uuid
 from dotenv import load_dotenv
 import os
+import logging
 
 # 환경 변수 로드
 load_dotenv()
 
-print(os.getenv("UPBIT_ACCESS_KEY"))
 
 # Blueprint 생성
 connect_bp = Blueprint('connect', __name__)
@@ -54,13 +54,13 @@ class UpbitTrader:
             return None
 
     def get_balance(self):
+        logging.info("잔고 조회 함수 실행")
         try:
-            print(f"잔고 조회 함수")
             payload = {
                 'access_key': self.access_key,
                 'nonce': str(uuid.uuid4()),
             }
-            print(f"access key: {self.access_key}")
+            logging.info("access_key: ${self.access_key}")
             jwt_token = jwt.encode(payload, self.secret_key)
             headers = {'Authorization': f'Bearer {jwt_token}'}
             url = "https://api.upbit.com/v1/accounts"
@@ -107,7 +107,7 @@ def get_chart():
 @connect_bp.route('/balance', methods=['GET'])
 def get_balance():
     """잔고 조회 API"""
-    print(f"잔고 조회 실행")
+    logging.info("잔고 조회 API 실행")
     data = trader.get_balance()
     if data is not None:
         return jsonify({
